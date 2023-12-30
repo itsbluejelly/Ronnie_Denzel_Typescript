@@ -1,0 +1,74 @@
+body {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial;
+    color: darkgrey;
+    flex-direction: column;
+}
+
+.container {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-bar {
+    width: 100%;
+    position: sticky;
+    background-color: white;
+    box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo {
+    height: 30px;
+    width: 46px;
+    background-size: 47px;
+    background-image: url('images/sofa-logo.png');
+    margin: 20px;
+}
+
+.user-container {
+    margin: 20px;
+}
+
+.properties {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 150px;
+    margin: 5px;
+    border-radius: 20px;
+    padding: 10px;
+    box-shadow: rgb(0 0 0 / 12%) 0 1px 8px;
+}
+
+.footer {
+    width: 100%;
+    background-color: lightcoral;
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    padding: 30px;
+    color: white;
+}
+
+.review-card {
+    padding: 10px;
+}
+
+.reviews {
+    display: flex;
+    padding: 10px;
+}
+
+.break {
+    height: 1px;
+    width: 90%;
+    background-color: coral;
+}

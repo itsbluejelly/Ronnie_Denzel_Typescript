@@ -1,0 +1,13 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "learning typescript",
+  "main": "index.ts",
+  "type": "module",
+  "scripts": {
+    "typescript-test": "npx ts-node index.ts",
+    "typescript": "tsc.cmd --watch"
+  },
+  "author": "Ronnie Denzel",
+  "license": "ISC"
+}
