@@ -51,8 +51,6 @@ body {
 .footer {
     width: 100%;
     background-color: lightcoral;
-    position: absolute;
-    bottom: 0;
     text-align: center;
     padding: 30px;
     color: white;

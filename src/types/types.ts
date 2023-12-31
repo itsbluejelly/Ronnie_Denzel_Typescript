@@ -31,7 +31,6 @@ export type User = {
 
     // A TYPE OF A PROPERTY
 export type Property = {
-    id: number,
     title: string,
     price: number,
         
@@ -40,14 +39,16 @@ export type Property = {
         phoneNumber: number
     },
 
-    isAvailable: true,
+    isAvailable: boolean,
 
     location: {
         city: string,
         country: string,
         firstLine?: string,
         code?: number
-    }
+    },
+
+    reviews?: (Review | object)[]
 }
 
 // DECLARING TYPEGUARDS

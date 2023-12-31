@@ -9,14 +9,20 @@ import users from "./database/userData.js"
 import properties from "./database/propertiesData.js"
     // IMPORTING TYPEGUARDS
 import { checkIfReview, checkIfUser, checkIfProperty } from "./types/types.js"
+    // IMPORTING CLASSES
+import PropertyClass from "./classes/Property.js"
 
 // DEFINING VARIABLES
+    // DOM ELEMENTS
 const reviewTotalDisplay = document.querySelector('#reviews') as HTMLHeadingElement
 const returningUserDisplay = document.querySelector('#returning-user') as HTMLSpanElement
 const userNameDisplay = document.querySelector('#user') as HTMLSpanElement
 const propertyContainer = document.querySelector('.properties') as HTMLDivElement
 const reviewContainer = document.querySelector('.reviews') as HTMLDivElement
 const getReviewsButton = document.querySelector('button') as HTMLButtonElement
+const mainImageContainer = document.querySelector('.main-image') as HTMLDivElement
+
+    // USER ID
 const userID: number = 1
 
 // A FUNCTION TO DETECT WHETHER THE VALUE SHOULD BE SINGULAR OR PLURAL
@@ -103,6 +109,7 @@ function showRecentSilverReview(): void{
         }
     }
 }
+
 // A FUNCTION TO SHOW THE RECENT BRONZE REVIEW
 function showRecentBronzeReview(): void{
     try{
@@ -243,11 +250,53 @@ function showPropertiesDetails(): void{
     }
 }
 
+// A FUNCTION TO SHOW THE MAIN PROPERTY
+function showMainProperty(): void{
+    try{
+        // CREATING A MAIN PROPERTY USING THE CLASS
+        const mainPropertyReview: Review = {
+            name: 'Olive',
+            stars: 5,
+            loyaltyUser: LoyaltyUser.GOLD_USER,
+            date: '12-04-2021'
+        }
+
+        const mainProperty: Property | void = PropertyClass.createProperty('Italian House', 100, "johnDoe@gmail.com", +1234567890, true, "Nairobi", "Kenya", undefined, undefined, mainPropertyReview)
+
+        // CHECKING IF A PROPERTY WAS REALLY CREATED
+        if(!mainProperty){
+            throw new Error("Sorry, there was an error in creating a property instance")
+        }
+
+        // ADDING NEW DATA TO THE DOM
+        mainImageContainer.innerHTML +=  `
+            <div class="card">
+                ${mainProperty.title}
+                
+                <img
+                    width="100"
+                    height="100"
+                    alt="property image"
+                    title="property image"
+                    loading="lazy"
+                />
+
+                <div hidden class="price-tag">${mainProperty.price}/night</div>
+            </div>
+        `
+    }catch(error: unknown){
+        if(error){
+            console.error(`${(error as Error).name}: ${(error as Error).message}`)
+        }
+    }
+}
+
 // RUNNING CREATED FUNCTIONS
 showRecentGoldReview()
 populateUser()
 generatePropertiesArray(...properties)
 showPropertiesDetails()
+showMainProperty()
 
 getReviewsButton.addEventListener("click", () => {
     showRecentSilverReview()

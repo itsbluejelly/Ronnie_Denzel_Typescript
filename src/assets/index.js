@@ -6,13 +6,18 @@ import users from "./database/userData.js";
 import properties from "./database/propertiesData.js";
 // IMPORTING TYPEGUARDS
 import { checkIfReview, checkIfUser, checkIfProperty } from "./types/types.js";
+// IMPORTING CLASSES
+import PropertyClass from "./classes/Property.js";
 // DEFINING VARIABLES
+// DOM ELEMENTS
 const reviewTotalDisplay = document.querySelector('#reviews');
 const returningUserDisplay = document.querySelector('#returning-user');
 const userNameDisplay = document.querySelector('#user');
 const propertyContainer = document.querySelector('.properties');
 const reviewContainer = document.querySelector('.reviews');
 const getReviewsButton = document.querySelector('button');
+const mainImageContainer = document.querySelector('.main-image');
+// USER ID
 const userID = 1;
 // A FUNCTION TO DETECT WHETHER THE VALUE SHOULD BE SINGULAR OR PLURAL
 const createPluralSyllable = (number) => (number > 1) || (number === 0) ? 's' : '';
@@ -226,11 +231,50 @@ function showPropertiesDetails() {
         }
     }
 }
+// A FUNCTION TO SHOW THE MAIN PROPERTY
+function showMainProperty() {
+    try {
+        // CREATING A MAIN PROPERTY USING THE CLASS
+        const mainPropertyReview = {
+            name: 'Olive',
+            stars: 5,
+            loyaltyUser: LoyaltyUser.GOLD_USER,
+            date: '12-04-2021'
+        };
+        const mainProperty = PropertyClass.createProperty('Italian House', "100", "johnDoe@gmail.com", +1234567890, true, "Nairobi", "Kenya", undefined, undefined, mainPropertyReview);
+        // CHECKING IF A PROPERTY WAS REALLY CREATED
+        if (!mainProperty) {
+            throw new Error("Sorry, there was an error in creating a property instance");
+        }
+        // ADDING NEW DATA TO THE DOM
+        mainImageContainer.innerHTML += `
+            <div class="card">
+                ${mainProperty.title}
+                
+                <img
+                    width="100"
+                    height="100"
+                    alt="property image"
+                    title="property image"
+                    loading="lazy"
+                />
+
+                <div hidden class="price-tag">${mainProperty.price}/night</div>
+            </div>
+        `;
+    }
+    catch (error) {
+        if (error) {
+            console.error(`${error.name}: ${error.message}`);
+        }
+    }
+}
 // RUNNING CREATED FUNCTIONS
 showRecentGoldReview();
 populateUser();
 generatePropertiesArray(...properties);
 showPropertiesDetails();
+showMainProperty();
 getReviewsButton.addEventListener("click", () => {
     showRecentSilverReview();
     showRecentBronzeReview();
