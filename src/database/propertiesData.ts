@@ -37,6 +37,25 @@ const properties = [
         },
         contact: [+34829374892553, 'andyluger@aol.com'],
         isAvailable: true
+    },
+
+    {
+        title: 'Malia Hotel',
+        price: 35,
+            
+        contact: {
+            email: "ronniedenzel0@gmail.com",
+            phoneNumber: +0o70707070707
+        },
+
+        isAvailable: false,
+
+        location: {
+            city: "Malay",
+            country: "Malaysia",
+            firstLine: "Room 4",
+            code: 45678
+        }
     }
 ]
 

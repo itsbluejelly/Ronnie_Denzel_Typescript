@@ -241,7 +241,7 @@ function showMainProperty() {
             loyaltyUser: LoyaltyUser.GOLD_USER,
             date: '12-04-2021'
         };
-        const mainProperty = PropertyClass.createProperty('Italian House', "100", "johnDoe@gmail.com", +1234567890, true, "Nairobi", "Kenya", undefined, undefined, mainPropertyReview);
+        const mainProperty = PropertyClass.createProperty('Italian House', 100, "johnDoe@gmail.com", +1234567890, true, "Nairobi", "Kenya", undefined, undefined, mainPropertyReview);
         // CHECKING IF A PROPERTY WAS REALLY CREATED
         if (!mainProperty) {
             throw new Error("Sorry, there was an error in creating a property instance");
