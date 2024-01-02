@@ -21,6 +21,7 @@ const propertyContainer = document.querySelector('.properties') as HTMLDivElemen
 const reviewContainer = document.querySelector('.reviews') as HTMLDivElement
 const getReviewsButton = document.querySelector('button') as HTMLButtonElement
 const mainImageContainer = document.querySelector('.main-image') as HTMLDivElement
+const logoContainer = document.querySelector(".logo") as HTMLDivElement
 
     // USER ID
 const userID: number = 1
@@ -215,6 +216,7 @@ function generatePropertiesArray(...listOfProperties: (Property | object)[]): vo
                     alt="property image"
                     title="property image"
                     loading="lazy"
+                    src= ${property.src}
                 />
 
                 <div hidden class="price-tag">${property.price}/night</div>
@@ -261,7 +263,7 @@ function showMainProperty(): void{
             date: '12-04-2021'
         }
 
-        const mainProperty: Property | void = PropertyClass.createProperty('Italian House', 100, "johnDoe@gmail.com", +1234567890, true, "Nairobi", "Kenya", undefined, undefined, mainPropertyReview)
+        const mainProperty: Property | void = PropertyClass.createProperty('Italian House', 100, "johnDoe@gmail.com", +1234567890, true, "Nairobi", "Kenya", undefined, undefined, "/img/properties/italian-property.jpg", mainPropertyReview)
 
         // CHECKING IF A PROPERTY WAS REALLY CREATED
         if(!mainProperty){
@@ -270,19 +272,19 @@ function showMainProperty(): void{
 
         // ADDING NEW DATA TO THE DOM
         mainImageContainer.innerHTML +=  `
-            <div class="card">
-                ${mainProperty.title}
-                
+            <figure>
                 <img
                     width="100"
                     height="100"
                     alt="property image"
                     title="property image"
                     loading="lazy"
+                    src=${mainProperty.src}
                 />
 
+                <figcaption>${mainProperty.title}</figcaption>
                 <div hidden class="price-tag">${mainProperty.price}/night</div>
-            </div>
+            </figure>
         `
     }catch(error: unknown){
         if(error){
@@ -295,8 +297,8 @@ function showMainProperty(): void{
 showRecentGoldReview()
 populateUser()
 generatePropertiesArray(...properties)
-showPropertiesDetails()
 showMainProperty()
+showPropertiesDetails()
 
 getReviewsButton.addEventListener("click", () => {
     showRecentSilverReview()

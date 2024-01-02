@@ -2,12 +2,13 @@
 // IMPORTING TYPES
 import { checkIfReview } from "../types/types.js";
 // A FUNCTION TO CREATE A PROPERTY OF A REGARDED TYPE
-function createProperty(title, price, email, phoneNumber, isAvailable, city, country, firstLine, code, ...listOfReviews) {
+function createProperty(title, price, email, phoneNumber, isAvailable, city, country, firstLine, code, src, ...listOfReviews) {
     try {
         // ADDING THE SAFE-TYPE PROPERTIES
         const newProperty = { title, price, isAvailable };
         newProperty.contact = { email, phoneNumber };
         newProperty.location = { city, country, firstLine, code };
+        newProperty.src = src;
         // CHECKING IF THERE ARE REVIEWS AND CHECKING THEIR SAFETY
         if (listOfReviews.length) {
             for (const review of listOfReviews) {

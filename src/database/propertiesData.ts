@@ -1,6 +1,7 @@
 // DATA ON THE PROPERTIES
 const properties = [
     {
+        src: "/img/properties/colombia-property.jpg",
         title: 'Colombian Shack',
         price: 45,
         location: {
@@ -14,6 +15,7 @@ const properties = [
     },
 
     {
+        src: "/img/properties/polish-property.jpg",
         title: 'Polish Cottage',
         price: 34,
         location: {
@@ -27,6 +29,7 @@ const properties = [
     },
 
     {
+        src: "./img/properties/london-property.jpg",
         title: 'London Flat',
         price: 23,
         location: {
@@ -40,6 +43,7 @@ const properties = [
     },
 
     {
+        src: "./img/properties/malia-property.jpg",
         title: 'Malia Hotel',
         price: 35,
             

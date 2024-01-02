@@ -4,12 +4,13 @@ import { Property, Review, checkIfReview} from "../types/types.js";
 
 
 // A FUNCTION TO CREATE A PROPERTY OF A REGARDED TYPE
-function createProperty(title: string, price: number, email: string, phoneNumber: number, isAvailable: boolean, city: string, country: string, firstLine?: string, code?: number, ...listOfReviews: (Review | object)[]): Property | void{
+function createProperty(title: string, price: number, email: string, phoneNumber: number, isAvailable: boolean, city: string, country: string, firstLine?: string, code?: number, src?: string, ...listOfReviews: (Review | object)[]): Property | void{
     try{
         // ADDING THE SAFE-TYPE PROPERTIES
         const newProperty = {title, price,isAvailable} as Property
         newProperty.contact = {email, phoneNumber}
         newProperty.location = {city, country, firstLine, code}
+        newProperty.src = src
 
         // CHECKING IF THERE ARE REVIEWS AND CHECKING THEIR SAFETY
         if(listOfReviews.length){

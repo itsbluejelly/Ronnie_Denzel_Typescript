@@ -48,6 +48,7 @@ export type Property = {
         code?: number
     },
 
+    src?: string,
     reviews?: (Review | object)[]
 }
 
